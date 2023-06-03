@@ -22,21 +22,42 @@ int main() {
     }
     std::cout << std::endl;
 
-    // Use DescendingIterator to display elements in descending order
-    std::cout << "Elements in cross order:\n";
-    MagicalContainer::SideCrossIterator crossIter(container);
-    for (auto it = crossIter.begin(); it != crossIter.end(); ++it) {
-        std::cout << *it << ' ';  // 2 25 3 17 9
-    }
-    std::cout << std::endl;
 
-    // Use PrimeIterator to display prime numbers only
-    std::cout << "Prime numbers:\n";
-    MagicalContainer::PrimeIterator primeIter(container);
-    for (auto it = primeIter.begin(); it != primeIter.end(); ++it) {
-        std::cout << *it << ' ';  // 2 3 17 
+    cout <<"_-----------------------bar -------------------" <<endl;
+    MagicalContainer container2;
+    for (int i = 1; i <= 10; ++i) {
+        container2.addElement(i * 10);
     }
-    std::cout << std::endl;
+
+    
+    MagicalContainer::AscendingIterator it1(container2);
+    MagicalContainer::AscendingIterator it2(container2);
+
+    cout<< "it1: " << (*it1) << "it2: " << (*it2) <<endl;
+    cout<< "1: " << (it1 == it2) <<endl;
+    cout<< "2: " << (!(it1 != it2)) <<endl;
+    cout<< "3: " << !(it1 < it2) <<endl;
+    cout<< "4: " << !(it1 > it2) <<endl;
+
+    cout <<"_-----------------------bar -------------------" <<endl;
+
+
+
+    // // Use DescendingIterator to display elements in descending order
+    // std::cout << "Elements in cross order:\n";
+    // MagicalContainer::SideCrossIterator crossIter(container);
+    // for (auto it = crossIter.begin(); it != crossIter.end(); ++it) {
+    //     std::cout << *it << ' ';  // 2 25 3 17 9
+    // }
+    // std::cout << std::endl;
+
+    // // Use PrimeIterator to display prime numbers only
+    // std::cout << "Prime numbers:\n";
+    // MagicalContainer::PrimeIterator primeIter(container);
+    // for (auto it = primeIter.begin(); it != primeIter.end(); ++it) {
+    //     std::cout << *it << ' ';  // 2 3 17 
+    // }
+    // std::cout << std::endl;
 
     // Remove an element from the container and display the size
     container.removeElement(9);
