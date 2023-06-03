@@ -98,7 +98,12 @@ public:
         int _position;
 
     public:
-        PrimeIterator(MagicalContainer &container); // Default constructor
+        PrimeIterator(MagicalContainer &container , int position = 0); // Default constructor
+        PrimeIterator(const PrimeIterator &other);  // Copy constructor
+
+        ~PrimeIterator() {}// Destructor
+
+        PrimeIterator &operator=(const PrimeIterator &other); // Assignment operator
 
         // Equality comparison (operator==)
         bool operator==(const PrimeIterator &other) const;

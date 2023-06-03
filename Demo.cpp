@@ -25,11 +25,9 @@ int main() {
 
     cout <<"_-----------------------bar -------------------" <<endl;
     MagicalContainer container2;
-    for (int i = 1; i <= 10; ++i) {
-        container2.addElement(i * 10);
+    for (int i = 1; i <= 2; ++i) {
+        container2.addElement(i);
     }
-
-    
     MagicalContainer::AscendingIterator it1(container2);
     MagicalContainer::AscendingIterator it2(container2);
 
@@ -39,6 +37,15 @@ int main() {
     cout<< "3: " << !(it1 < it2) <<endl;
     cout<< "4: " << !(it1 > it2) <<endl;
 
+    cout<< "end: " << (*it1.end()) <<endl;
+    cout<< "begin: " << (*it1.begin()) <<endl;
+    ++it1;
+    cout<< "next: " << (*it1) <<endl;
+    cout<< "hii " <<endl;
+    ++it1;
+    cout << "true / false: " << (it1 == it2.end()) <<endl;
+
+    
     cout <<"_-----------------------bar -------------------" <<endl;
 
 
@@ -65,3 +72,4 @@ int main() {
 
     return 0;
 }
+

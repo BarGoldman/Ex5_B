@@ -4,6 +4,7 @@
 #include <cmath>
 #include <algorithm>
 #include <stdexcept>
+#include <iostream>
 
 using namespace std;
 
@@ -13,7 +14,7 @@ bool isPrime(int num)
     {
         return false;
     }
-    for (int i = 2; i < sqrt(num); i++)
+    for (int i = 2; i <= sqrt(num); i++)
     {
         if (num % i == 0)
         {
@@ -100,16 +101,22 @@ MagicalContainer::AscendingIterator &MagicalContainer::AscendingIterator::operat
     return *this;
 }
 
+
+// the position betwin other to this is the same:
 // Equality comparison (operator==)
 bool MagicalContainer::AscendingIterator::operator==(const AscendingIterator &other) const
 {
     return (_position == other._position);
 }
+
+// the position betwin other to this is NOT the same:
 // Inequality comparison (operator!=)
 bool MagicalContainer::AscendingIterator::operator!=(const AscendingIterator &other) const
 {
     return !(_position == other._position);
 }
+
+// the position betwin other to this is bigger/smaller:
 bool MagicalContainer::AscendingIterator::operator>(const AscendingIterator &other) const
 {
     return (_position > other._position);
@@ -119,6 +126,8 @@ bool MagicalContainer::AscendingIterator::operator<(const AscendingIterator &oth
     return (_position < other._position);
 }
 
+
+//get the val
 // Dereference operator (operator*)
 int MagicalContainer::AscendingIterator::operator*() const
 {
@@ -135,11 +144,15 @@ MagicalContainer::AscendingIterator &MagicalContainer::AscendingIterator::operat
     return (*this);
 }
 
+
+// the first position of the container
 MagicalContainer::AscendingIterator MagicalContainer::AscendingIterator::begin()
 {
     return AscendingIterator(_container);
 }
 
+
+// the end position of the container:
 MagicalContainer::AscendingIterator MagicalContainer::AscendingIterator::end()
 {
     return AscendingIterator(_container, _container.size());
@@ -192,11 +205,28 @@ MagicalContainer::SideCrossIterator MagicalContainer::SideCrossIterator::end()
 
 ///////////////////////////////////////// PrimeIterator ////////////////////////
 
-MagicalContainer::PrimeIterator::PrimeIterator(MagicalContainer &container) : _container(container) {}
+MagicalContainer::PrimeIterator::PrimeIterator(MagicalContainer &container , int position) : _container(container) , _position(position) {
+    
+}
+
+MagicalContainer::PrimeIterator::PrimeIterator(const PrimeIterator &other) : _container(other._container), _position(other._position)
+{
+}
+
+MagicalContainer::PrimeIterator &MagicalContainer::PrimeIterator::operator=(const PrimeIterator &other){
+    if((this) != &other){
+        throw runtime_error("terators are pointing at different containers");
+    }
+    _container = other._container;
+    _position = other._position;
+    return *this;
+}
 
 // Equality comparison (operator==)
 bool MagicalContainer::PrimeIterator::operator==(const PrimeIterator &other) const
 {
+    cout<< "this position: " << _position << endl;
+    cout<< "this position: " << other._position << endl;
     return (_position == other._position);
 }
 // Inequality comparison (operator!=)
@@ -216,16 +246,16 @@ bool MagicalContainer::PrimeIterator::operator<(const PrimeIterator &other) cons
 // Dereference operator (operator*)
 int MagicalContainer::PrimeIterator::operator*() const
 {
-    return 3;
+    return *(_container._primeElement[(size_t)_position]);
 }
 
 // Pre-increment operator (operator++)
 MagicalContainer::PrimeIterator &MagicalContainer::PrimeIterator::operator++()
 {
-    int temp = _position + 1;
-    if (_container._primeElement.size() <= temp)
-    {
-        throw("stop");
+    cout << "prime size: " << _container._primeElement.size() << endl;
+    cout << "position: " << _position << endl;
+    if(_position >= _container._primeElement.size()){
+        throw runtime_error("you try to increment beyond the end");
     }
     _position = _position + 1;
     return (*this);
@@ -238,5 +268,5 @@ MagicalContainer::PrimeIterator MagicalContainer::PrimeIterator::begin()
 
 MagicalContainer::PrimeIterator MagicalContainer::PrimeIterator::end()
 {
-    return PrimeIterator(_container);
+    return PrimeIterator(_container, _container.size());
 }
