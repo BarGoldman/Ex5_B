@@ -25,27 +25,36 @@ int main() {
 
     cout <<"_-----------------------bar -------------------" <<endl;
     MagicalContainer container2;
-    for (int i = 1; i <= 2; ++i) {
+    for (int i = 1; i <= 6; ++i) {
         container2.addElement(i);
     }
-    MagicalContainer::AscendingIterator it1(container2);
-    MagicalContainer::AscendingIterator it2(container2);
+    // MagicalContainer::AscendingIterator it1(container2);
+    // MagicalContainer::AscendingIterator it2(container2);
 
-    cout<< "it1: " << (*it1) << "it2: " << (*it2) <<endl;
-    cout<< "1: " << (it1 == it2) <<endl;
-    cout<< "2: " << (!(it1 != it2)) <<endl;
-    cout<< "3: " << !(it1 < it2) <<endl;
-    cout<< "4: " << !(it1 > it2) <<endl;
+    // cout<< "it1: " << (*it1) << "it2: " << (*it2) <<endl;
+    // cout<< "1: " << (it1 == it2) <<endl;
+    // cout<< "2: " << (!(it1 != it2)) <<endl;
+    // cout<< "3: " << !(it1 < it2) <<endl;
+    // cout<< "4: " << !(it1 > it2) <<endl;
 
-    cout<< "end: " << (*it1.end()) <<endl;
-    cout<< "begin: " << (*it1.begin()) <<endl;
-    ++it1;
-    cout<< "next: " << (*it1) <<endl;
-    cout<< "hii " <<endl;
-    ++it1;
-    cout << "true / false: " << (it1 == it2.end()) <<endl;
+    // cout<< "end: " << (*it1.end()) <<endl;
+    // cout<< "begin: " << (*it1.begin()) <<endl;
+    // ++it1;
+    // cout<< "next: " << (*it1) <<endl;
+    // cout<< "hii " <<endl;
+    // ++it1;
+    // cout << "true / false: " << (it1 == it2.end()) <<endl;
 
-    
+    MagicalContainer::PrimeIterator it(container2);
+    cout << "if is == : " << (it == it.end()) << endl;
+    cout << "1: " << (*it) << endl; // 2
+    ++it;
+    cout << "2: " << (*it) << endl; // 3
+    ++it;
+    cout << "3: " << (*it) << endl; // 5
+    ++it;
+    cout << "end: " << (&it) << endl;
+
     cout <<"_-----------------------bar -------------------" <<endl;
 
 

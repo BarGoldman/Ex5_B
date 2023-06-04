@@ -268,5 +268,5 @@ MagicalContainer::PrimeIterator MagicalContainer::PrimeIterator::begin()
 
 MagicalContainer::PrimeIterator MagicalContainer::PrimeIterator::end()
 {
-    return PrimeIterator(_container, _container.size());
+    return PrimeIterator(_container, _container._primeElement.size());
 }
