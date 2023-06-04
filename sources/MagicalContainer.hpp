@@ -68,9 +68,15 @@ public:
     private:
         MagicalContainer &_container;
         int _position;
+        int _counter;
 
     public:
-        SideCrossIterator(MagicalContainer &container); // Default constructor
+        SideCrossIterator(MagicalContainer &container, int position = 0 , int counter = 0); // Default constructor
+        SideCrossIterator(const SideCrossIterator &other);                // Copy constructor
+
+        ~SideCrossIterator() {} // Destructor
+
+        SideCrossIterator &operator=(const SideCrossIterator &other); // Assignment operator
 
         // Equality comparison (operator==)
         bool operator==(const SideCrossIterator &other) const;

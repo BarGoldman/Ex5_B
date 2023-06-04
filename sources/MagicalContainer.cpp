@@ -160,17 +160,30 @@ MagicalContainer::AscendingIterator MagicalContainer::AscendingIterator::end()
 
 ///////////////////////////////////////// SideCrossIterator ////////////////////////
 
-MagicalContainer::SideCrossIterator::SideCrossIterator(MagicalContainer &container) : _container(container) {}
+MagicalContainer::SideCrossIterator::SideCrossIterator(MagicalContainer &container , int position , int counter) : _container(container) , _position(position) , _counter(counter) {}
+MagicalContainer::SideCrossIterator::SideCrossIterator(const SideCrossIterator &other) : _container(other._container), _position(other._position) , _counter(other._counter)
+{
+}
 
+MagicalContainer::SideCrossIterator &MagicalContainer::SideCrossIterator::operator=(const SideCrossIterator &other)
+{
+    if((this) != &other){
+        throw runtime_error("terators are pointing at different containers");
+    }
+    _container = other._container;
+    _position = other._position;
+    _counter = other._counter;
+    return *this;
+}
 // Equality comparison (operator==)
 bool MagicalContainer::SideCrossIterator::operator==(const SideCrossIterator &other) const
 {
-    return true;
+    return (_position == other._position);
 }
 // Inequality comparison (operator!=)
 bool MagicalContainer::SideCrossIterator::operator!=(const SideCrossIterator &other) const
 {
-    return false;
+    return !(_position == other._position);
 }
 bool MagicalContainer::SideCrossIterator::operator>(const SideCrossIterator &other) const
 {
@@ -184,12 +197,25 @@ bool MagicalContainer::SideCrossIterator::operator<(const SideCrossIterator &oth
 // Dereference operator (operator*)
 int MagicalContainer::SideCrossIterator::operator*() const
 {
-    return 3;
+    return (_container._element[(size_t)_position]);
 }
 
 // Pre-increment operator (operator++)
 MagicalContainer::SideCrossIterator &MagicalContainer::SideCrossIterator::operator++()
 {
+    if (_position >= _container._element.size())
+    {
+        throw runtime_error("you try to increment beyond the end");
+    }
+    // if _position is even
+    if(_position % 2 == 0 ){
+        _position = _position - _counter;
+    }
+    // if posotion is odd
+    else{
+        _position = (_container._element.size() - 1) - _counter;
+        ++_counter;
+    }
     return (*this);
 }
 
@@ -200,7 +226,7 @@ MagicalContainer::SideCrossIterator MagicalContainer::SideCrossIterator::begin()
 
 MagicalContainer::SideCrossIterator MagicalContainer::SideCrossIterator::end()
 {
-    return SideCrossIterator(_container);
+    return SideCrossIterator(_container,_container._element.size());
 }
 
 ///////////////////////////////////////// PrimeIterator ////////////////////////
