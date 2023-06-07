@@ -36,9 +36,9 @@ public:
         AscendingIterator(const AscendingIterator &other);                // Copy constructor
 
         ~AscendingIterator(){} // Destructor
-        
+
         // for tidy
-        AscendingIterator(AscendingIterator &&other) = delete; 
+        AscendingIterator(AscendingIterator &&other) = default; 
         AscendingIterator &operator=(AscendingIterator &&other) = delete;
 
 
@@ -77,7 +77,7 @@ public:
 
         ~SideCrossIterator() {} // Destructor
         // for tidy
-        SideCrossIterator(SideCrossIterator &&other) = delete;
+        SideCrossIterator(SideCrossIterator &&other) = default;
         SideCrossIterator &operator=(SideCrossIterator &&other) = delete;
 
         SideCrossIterator &operator=(const SideCrossIterator &other); // Assignment operator
@@ -114,7 +114,7 @@ public:
         ~PrimeIterator() {} // Destructor
 
         // for tidy
-        PrimeIterator(PrimeIterator &&other) = delete;
+        PrimeIterator(PrimeIterator &&other) = default;
         PrimeIterator &operator=(PrimeIterator &&other) = delete;
 
         PrimeIterator &operator=(const PrimeIterator &other); // Assignment operator
