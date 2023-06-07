@@ -15,7 +15,7 @@ private:
     vector<int *> _primeElement;
 
 public:
-    MagicalContainer();
+    MagicalContainer(); // constructor
 
     void addElement(int num);
 
@@ -40,7 +40,6 @@ public:
         // for tidy
         AscendingIterator(AscendingIterator &&other) = default; 
         AscendingIterator &operator=(AscendingIterator &&other) = delete;
-
 
         AscendingIterator &operator=(const AscendingIterator &other); // Assignment operator
 

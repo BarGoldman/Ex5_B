@@ -33,6 +33,8 @@ void MagicalContainer::addElement(int num)
 
     // upper_bound - find the element in the range that is bigger then num
     // if he did not find some _element return the end place
+
+    cout << &_element << endl;
     auto it = upper_bound(_element.begin(), _element.end(), num);
     _element.insert(it, num);
 
@@ -148,25 +150,23 @@ MagicalContainer::AscendingIterator &MagicalContainer::AscendingIterator::operat
 }
 
 
-// the first position of the container
+//return the iterator of first position of the container
 MagicalContainer::AscendingIterator MagicalContainer::AscendingIterator::begin()
 {
     return AscendingIterator(_container);
 }
 
 
-// the end position of the container:
+//return the iterator of end position of the container
 MagicalContainer::AscendingIterator MagicalContainer::AscendingIterator::end()
 {
-    return AscendingIterator(_container, _container.size());
+    return AscendingIterator(_container, _container._element.size());
 }
 
 ///////////////////////////////////////// SideCrossIterator ////////////////////////
 
 MagicalContainer::SideCrossIterator::SideCrossIterator(MagicalContainer &container , int position , int counter) : _container(container) , _position(position) , _counter(counter) {}
-MagicalContainer::SideCrossIterator::SideCrossIterator(const SideCrossIterator &other) : _container(other._container), _position(other._position) , _counter(other._counter)
-{
-}
+MagicalContainer::SideCrossIterator::SideCrossIterator(const SideCrossIterator &other) : _container(other._container), _position(other._position) , _counter(other._counter){}
 
 MagicalContainer::SideCrossIterator &MagicalContainer::SideCrossIterator::operator=(const SideCrossIterator &other)
 {
@@ -225,12 +225,12 @@ MagicalContainer::SideCrossIterator &MagicalContainer::SideCrossIterator::operat
     _position++;
     return (*this);
 }
-
+//return the iterator of first position of the container
 MagicalContainer::SideCrossIterator MagicalContainer::SideCrossIterator::begin()
 {
     return SideCrossIterator(_container);
 }
-
+//return the iterator of end position of the container
 MagicalContainer::SideCrossIterator MagicalContainer::SideCrossIterator::end()
 {
     return SideCrossIterator(_container,_container._element.size());
@@ -238,13 +238,9 @@ MagicalContainer::SideCrossIterator MagicalContainer::SideCrossIterator::end()
 
 ///////////////////////////////////////// PrimeIterator ////////////////////////
 
-MagicalContainer::PrimeIterator::PrimeIterator(MagicalContainer &container , int position) : _container(container) , _position(position) {
-    
-}
+MagicalContainer::PrimeIterator::PrimeIterator(MagicalContainer &container , int position) : _container(container) , _position(position) {}
 
-MagicalContainer::PrimeIterator::PrimeIterator(const PrimeIterator &other) : _container(other._container), _position(other._position)
-{
-}
+MagicalContainer::PrimeIterator::PrimeIterator(const PrimeIterator &other) : _container(other._container), _position(other._position){}
 
 MagicalContainer::PrimeIterator &MagicalContainer::PrimeIterator::operator=(const PrimeIterator &other){
     if((this) != &other){
@@ -289,12 +285,12 @@ MagicalContainer::PrimeIterator &MagicalContainer::PrimeIterator::operator++()
     _position = _position + 1;
     return (*this);
 }
-
+//return the iterator of first position of the container
 MagicalContainer::PrimeIterator MagicalContainer::PrimeIterator::begin()
 {
     return PrimeIterator(_container);
 }
-
+//return the iterator of end position of the container 
 MagicalContainer::PrimeIterator MagicalContainer::PrimeIterator::end()
 {
     return PrimeIterator(_container, _container._primeElement.size());

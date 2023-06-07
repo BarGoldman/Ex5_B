@@ -25,45 +25,45 @@ int main() {
     cout << "_-----------------------bar -------------------" << endl;
 
     MagicalContainer container2;
-    container2.addElement(1);
-    container2.addElement(2);
-    container2.addElement(4);
-    container2.addElement(5);
-    container2.addElement(14);
-    container2.addElement(30);
+    // container2.addElement(1);
+    // container2.addElement(2);
+    // container2.addElement(4);
+    // container2.addElement(5);
+    // container2.addElement(14);
+    // container2.addElement(30);
 
 
-    // for (int i = 1; i <= 6; ++i)
-    // {
+    for (int i = 1; i <= 16; ++i)
+    {
 
-    //     container2.addElement(i);
-    // }
+        container2.addElement(i);
+    }
     MagicalContainer::SideCrossIterator it(container2);
     MagicalContainer::SideCrossIterator it2(container2);
-    cout << "1: " << *it << endl; // 1
-    ++it;
-    cout << "2: " << *it << endl; // 30
-    ++it;
-    cout << "3: " << *it << endl; // 2
-    ++it;
-    cout << "4: " << *it << endl; //14
-    ++it;
-    cout << "5: " << *it << endl; // 4
-    ++it;
-    cout << "5: " << *it << endl; // 5
+    // cout << "1: " << *it << endl; // 1
+    // ++it;
+    // cout << "2: " << *it << endl; // 30
+    // ++it;
+    // cout << "3: " << *it << endl; // 2
+    // ++it;
+    // cout << "4: " << *it << endl; //14
+    // ++it;
+    // cout << "5: " << *it << endl; // 4
+    // ++it;
+    // cout << "5: " << *it << endl; // 5
 
-    cout << "bar: " << endl;
-    container2.removeElement(2);
+    // cout << "bar: " << endl;
+    // container2.removeElement(2);
 
-    cout << "1: " << *it2 << endl; // 1
-    ++it2;
-    cout << "2: " << *it2 << endl; // 30
-    ++it2;
-    cout << "3: " << *it2 << endl; // 4
-    ++it2;
-    cout << "4: " << *it2 << endl; //14
-    ++it2;
-    cout << "5: " << *it2 << endl; // 5
+    // cout << "1: " << *it2 << endl; // 1
+    // ++it2;
+    // cout << "2: " << *it2 << endl; // 30
+    // ++it2;
+    // cout << "3: " << *it2 << endl; // 4
+    // ++it2;
+    // cout << "4: " << *it2 << endl; //14
+    // ++it2;
+    // cout << "5: " << *it2 << endl; // 5
 
 
     cout << "_-----------------------bar -------------------" << endl;
