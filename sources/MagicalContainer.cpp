@@ -36,17 +36,19 @@ void MagicalContainer::addElement(int num)
     auto it = upper_bound(_element.begin(), _element.end(), num);
     _element.insert(it, num);
 
+    size_t i = 0;
+    _primeElement.clear();
     // now we want to chack if is prime number:
-    if (isPrime(num))
+
+    while (i < _element.size())
     {
-        int *numPtr = new int(num);
-        auto primeIt = std::upper_bound(_primeElement.begin(), _primeElement.end(), numPtr,
-                                        [](const int *a, const int *b)
-                                        { return *a < *b; });
-        _primeElement.insert(primeIt, numPtr);
+        if (isPrime(_element[i]))
+        {
+            _primeElement.push_back(&(_element[i]));
+        }
+        i++;
     }
 }
-
 
 int MagicalContainer::size() const
 {
@@ -68,17 +70,18 @@ void MagicalContainer::removeElement(int num)
     {
         throw std::runtime_error("the element thes not excist ");
     }
-    if (isPrime(num))
-    {
-        auto it = std::find_if(_primeElement.begin(), _primeElement.end(),
-                               [num](const int *ptr)
-                               { return *ptr == num; });
 
-        if (it != _primeElement.end())
+    size_t i = 0;
+    _primeElement.clear();
+    // now we want to chack if is prime number:
+
+    while (i < _element.size())
+    {
+        if (isPrime(_element[i]))
         {
-            delete *it;
-            _primeElement.erase(it);
+            _primeElement.push_back(&(_element[i]));
         }
+        i++;
     }
 }
 
@@ -213,7 +216,7 @@ MagicalContainer::SideCrossIterator &MagicalContainer::SideCrossIterator::operat
     }
     // if posotion is odd
     else{
-        _position = (_container._element.size() - 1) - _counter;
+        _position = (_container._element.size() - 1) - (size_t)_counter;
         ++_counter;
     }
     return (*this);

@@ -22,42 +22,93 @@ int main() {
     }
     std::cout << std::endl;
 
+    cout << "_-----------------------bar -------------------" << endl;
 
-    cout <<"_-----------------------bar -------------------" <<endl;
     MagicalContainer container2;
-    for (int i = 1; i <= 6; ++i) {
+
+    for (int i = 1; i <= 9; ++i)
+    {
+
         container2.addElement(i);
     }
+
     // MagicalContainer::AscendingIterator it1(container2);
+
     // MagicalContainer::AscendingIterator it2(container2);
 
     // cout<< "it1: " << (*it1) << "it2: " << (*it2) <<endl;
+
     // cout<< "1: " << (it1 == it2) <<endl;
+
     // cout<< "2: " << (!(it1 != it2)) <<endl;
+
     // cout<< "3: " << !(it1 < it2) <<endl;
+
     // cout<< "4: " << !(it1 > it2) <<endl;
 
     // cout<< "end: " << (*it1.end()) <<endl;
+
     // cout<< "begin: " << (*it1.begin()) <<endl;
+
     // ++it1;
+
     // cout<< "next: " << (*it1) <<endl;
+
     // cout<< "hii " <<endl;
+
     // ++it1;
+
     // cout << "true / false: " << (it1 == it2.end()) <<endl;
 
-    MagicalContainer::PrimeIterator it(container2);
-    cout << "if is == : " << (it == it.end()) << endl;
-    cout << "1: " << (*it) << endl; // 2
-    ++it;
-    cout << "2: " << (*it) << endl; // 3
-    ++it;
-    cout << "3: " << (*it) << endl; // 5
-    ++it;
-    cout << "end: " << (&it) << endl;
+    MagicalContainer::PrimeIterator it1(container2);
 
-    cout <<"_-----------------------bar -------------------" <<endl;
+    MagicalContainer::PrimeIterator it2(container2);
 
+    cout << "1: " << (*it1) << endl; // 2
 
+    ++it1;
+
+    cout << "2: " << (*it1) << endl; // 3
+
+    ++it1;
+
+    cout << "3: " << (*it1) << endl; // 5
+
+    ++it1;
+
+    cout << "4: " << (*it1) << endl; // 7
+
+    ++it1;
+
+    cout << "end: " << (&it1) << endl;
+
+    container2.removeElement(2);
+
+    cout << "1: " << (*it1.begin()) << endl; // 2
+
+    cout << "2: " << (*(++it1.begin())) << endl; // 3
+
+    cout << "3: " << (*(++(++it1.begin()))) << endl; // 5
+
+    cout << "end   2222222 : " << (&it1) << endl;
+
+    cout << "1: " << (*it2) << endl; // 2
+
+    ++it2;
+
+    cout << "2: " << (*it2) << endl; // 3
+
+    ++it2;
+
+    cout << "3: " << (*it2) << endl; // 5
+
+    // ++it1;
+
+    // cout << "4: " << (*it2) << endl; // 7
+
+    // ++it1;
+
+    cout << "_-----------------------bar -------------------" << endl;
 
     // // Use DescendingIterator to display elements in descending order
     // std::cout << "Elements in cross order:\n";

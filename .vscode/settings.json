@@ -1,5 +1,8 @@
 {
     "files.associations": {
         "iostream": "cpp"
-    }
+    },
+    "workbench.colorTheme": "Default Light Modern",
+    "workbench.preferredDarkColorTheme": "Default Dark Modern",
+    "workbench.preferredHighContrastLightColorTheme": "GitHub Light High Contrast"
 }
