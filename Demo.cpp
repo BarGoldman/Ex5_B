@@ -25,106 +25,64 @@ int main() {
     cout << "_-----------------------bar -------------------" << endl;
 
     MagicalContainer container2;
+    container2.addElement(1);
+    container2.addElement(2);
+    container2.addElement(4);
+    container2.addElement(5);
+    container2.addElement(14);
+    container2.addElement(30);
 
-    for (int i = 1; i <= 9; ++i)
-    {
 
-        container2.addElement(i);
-    }
+    // for (int i = 1; i <= 6; ++i)
+    // {
 
-    // MagicalContainer::AscendingIterator it1(container2);
+    //     container2.addElement(i);
+    // }
+    MagicalContainer::SideCrossIterator it(container2);
+    MagicalContainer::SideCrossIterator it2(container2);
+    cout << "1: " << *it << endl; // 1
+    ++it;
+    cout << "2: " << *it << endl; // 30
+    ++it;
+    cout << "3: " << *it << endl; // 2
+    ++it;
+    cout << "4: " << *it << endl; //14
+    ++it;
+    cout << "5: " << *it << endl; // 4
+    ++it;
+    cout << "5: " << *it << endl; // 5
 
-    // MagicalContainer::AscendingIterator it2(container2);
-
-    // cout<< "it1: " << (*it1) << "it2: " << (*it2) <<endl;
-
-    // cout<< "1: " << (it1 == it2) <<endl;
-
-    // cout<< "2: " << (!(it1 != it2)) <<endl;
-
-    // cout<< "3: " << !(it1 < it2) <<endl;
-
-    // cout<< "4: " << !(it1 > it2) <<endl;
-
-    // cout<< "end: " << (*it1.end()) <<endl;
-
-    // cout<< "begin: " << (*it1.begin()) <<endl;
-
-    // ++it1;
-
-    // cout<< "next: " << (*it1) <<endl;
-
-    // cout<< "hii " <<endl;
-
-    // ++it1;
-
-    // cout << "true / false: " << (it1 == it2.end()) <<endl;
-
-    MagicalContainer::PrimeIterator it1(container2);
-
-    MagicalContainer::PrimeIterator it2(container2);
-
-    cout << "1: " << (*it1) << endl; // 2
-
-    ++it1;
-
-    cout << "2: " << (*it1) << endl; // 3
-
-    ++it1;
-
-    cout << "3: " << (*it1) << endl; // 5
-
-    ++it1;
-
-    cout << "4: " << (*it1) << endl; // 7
-
-    ++it1;
-
-    cout << "end: " << (&it1) << endl;
-
+    cout << "bar: " << endl;
     container2.removeElement(2);
 
-    cout << "1: " << (*it1.begin()) << endl; // 2
-
-    cout << "2: " << (*(++it1.begin())) << endl; // 3
-
-    cout << "3: " << (*(++(++it1.begin()))) << endl; // 5
-
-    cout << "end   2222222 : " << (&it1) << endl;
-
-    cout << "1: " << (*it2) << endl; // 2
-
+    cout << "1: " << *it2 << endl; // 1
     ++it2;
-
-    cout << "2: " << (*it2) << endl; // 3
-
+    cout << "2: " << *it2 << endl; // 30
     ++it2;
+    cout << "3: " << *it2 << endl; // 4
+    ++it2;
+    cout << "4: " << *it2 << endl; //14
+    ++it2;
+    cout << "5: " << *it2 << endl; // 5
 
-    cout << "3: " << (*it2) << endl; // 5
-
-    // ++it1;
-
-    // cout << "4: " << (*it2) << endl; // 7
-
-    // ++it1;
 
     cout << "_-----------------------bar -------------------" << endl;
 
-    // // Use DescendingIterator to display elements in descending order
-    // std::cout << "Elements in cross order:\n";
-    // MagicalContainer::SideCrossIterator crossIter(container);
-    // for (auto it = crossIter.begin(); it != crossIter.end(); ++it) {
-    //     std::cout << *it << ' ';  // 2 25 3 17 9
-    // }
-    // std::cout << std::endl;
+    // Use DescendingIterator to display elements in descending order
+    std::cout << "Elements in cross order:\n";
+    MagicalContainer::SideCrossIterator crossIter(container);
+    for (auto it = crossIter.begin(); it != crossIter.end(); ++it) {
+        std::cout << *it << ' ';  // 2 25 3 17 9
+    }
+    std::cout << std::endl;
 
-    // // Use PrimeIterator to display prime numbers only
-    // std::cout << "Prime numbers:\n";
-    // MagicalContainer::PrimeIterator primeIter(container);
-    // for (auto it = primeIter.begin(); it != primeIter.end(); ++it) {
-    //     std::cout << *it << ' ';  // 2 3 17 
-    // }
-    // std::cout << std::endl;
+    // Use PrimeIterator to display prime numbers only
+    std::cout << "Prime numbers:\n";
+    MagicalContainer::PrimeIterator primeIter(container);
+    for (auto it = primeIter.begin(); it != primeIter.end(); ++it) {
+        std::cout << *it << ' ';  // 2 3 17 
+    }
+    std::cout << std::endl;
 
     // Remove an element from the container and display the size
     container.removeElement(9);
