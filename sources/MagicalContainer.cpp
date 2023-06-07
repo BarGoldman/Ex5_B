@@ -26,22 +26,16 @@ bool isPrime(int num)
 
 
 MagicalContainer::MagicalContainer(){};
-void MagicalContainer::addElement(int num)
+
+void MagicalContainer::primeHelper()
 {
-    // To find the right location to add the number, I used the following website:
-    // https://www.geeksforgeeks.org/upper_bound-in-cpp/
-
-    // upper_bound - find the element in the range that is bigger then num
-    // if he did not find some _element return the end place
-
-    cout << &_element << endl;
-    auto it = upper_bound(_element.begin(), _element.end(), num);
-    _element.insert(it, num);
-
     size_t i = 0;
     _primeElement.clear();
-    // now we want to chack if is prime number:
 
+    // Every time an element is added or removed,
+    //  the vector reallocates itself, and all the addresses within it change accordingly
+
+    // now we want to chack if is prime number and add to _primeElement:
     while (i < _element.size())
     {
         if (isPrime(_element[i]))
@@ -52,6 +46,18 @@ void MagicalContainer::addElement(int num)
     }
 }
 
+void MagicalContainer::addElement(int num)
+{
+    // To find the right location to add the number, I used the following website:
+    // https://www.geeksforgeeks.org/upper_bound-in-cpp/
+
+    // upper_bound - find the element in the range that is bigger then num
+    // if he did not find some _element return the end place
+    auto it = upper_bound(_element.begin(), _element.end(), num);
+    _element.insert(it, num);
+    primeHelper();
+}
+
 int MagicalContainer::size() const
 {
     return _element.size();
@@ -59,7 +65,7 @@ int MagicalContainer::size() const
 
 void MagicalContainer::removeElement(int num)
 {
-    if (_element.size() == 0)
+    if (_element.empty())
     {
         throw std::runtime_error("you try remove from empty container");
     }
@@ -72,19 +78,7 @@ void MagicalContainer::removeElement(int num)
     {
         throw std::runtime_error("the element thes not excist ");
     }
-
-    size_t i = 0;
-    _primeElement.clear();
-    // now we want to chack if is prime number:
-
-    while (i < _element.size())
-    {
-        if (isPrime(_element[i]))
-        {
-            _primeElement.push_back(&(_element[i]));
-        }
-        i++;
-    }
+    primeHelper();
 }
 
 ///////////////////////////////////////// AscendingIterator ////////////////////////

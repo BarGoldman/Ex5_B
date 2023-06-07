@@ -22,6 +22,7 @@ public:
     int size() const;
 
     void removeElement(int num);
+    void primeHelper();
 
     ///////////////////////////////////////// AscendingIterator ////////////////////////
 

@@ -33,33 +33,33 @@ int main() {
     // container2.addElement(30);
 
 
-    for (int i = 1; i <= 16; ++i)
+    for (int i = 1; i <= 9; ++i)
     {
 
         container2.addElement(i);
     }
-    MagicalContainer::SideCrossIterator it(container2);
-    MagicalContainer::SideCrossIterator it2(container2);
-    // cout << "1: " << *it << endl; // 1
-    // ++it;
-    // cout << "2: " << *it << endl; // 30
-    // ++it;
-    // cout << "3: " << *it << endl; // 2
-    // ++it;
-    // cout << "4: " << *it << endl; //14
-    // ++it;
+    MagicalContainer::PrimeIterator it(container2);
+    MagicalContainer::PrimeIterator it2(container2);
+    cout << "1: " << *it << endl; // 2
+    ++it;
+    cout << "2: " << *it << endl; // 3
+    ++it;
+    cout << "3: " << *it << endl; // 5
+    ++it;
+    cout << "4: " << *it << endl; //7
+    ++it;
     // cout << "5: " << *it << endl; // 4
     // ++it;
     // cout << "5: " << *it << endl; // 5
 
-    // cout << "bar: " << endl;
-    // container2.removeElement(2);
+    cout << "bar: " << endl;
+    container2.removeElement(2);
 
-    // cout << "1: " << *it2 << endl; // 1
-    // ++it2;
-    // cout << "2: " << *it2 << endl; // 30
-    // ++it2;
-    // cout << "3: " << *it2 << endl; // 4
+    cout << "1: " << *it2 << endl; // 3
+    ++it2;
+    cout << "2: " << *it2 << endl; // 5
+    ++it2;
+    cout << "3: " << *it2 << endl; // 7
     // ++it2;
     // cout << "4: " << *it2 << endl; //14
     // ++it2;
