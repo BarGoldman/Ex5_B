@@ -35,10 +35,11 @@ public:
         AscendingIterator(MagicalContainer &container, int position = 0); // Default constructor
         AscendingIterator(const AscendingIterator &other);                // Copy constructor
 
-        ~AscendingIterator() {} // Destructor
-
-        // AscendingIterator(AscendingIterator &&other); 
-        // AscendingIterator &operator=(AscendingIterator &&other);
+        ~AscendingIterator(){} // Destructor
+        
+        // for tidy
+        AscendingIterator(AscendingIterator &&other) = delete; 
+        AscendingIterator &operator=(AscendingIterator &&other) = delete;
 
 
         AscendingIterator &operator=(const AscendingIterator &other); // Assignment operator
@@ -75,6 +76,9 @@ public:
         SideCrossIterator(const SideCrossIterator &other);                // Copy constructor
 
         ~SideCrossIterator() {} // Destructor
+        // for tidy
+        SideCrossIterator(SideCrossIterator &&other) = delete;
+        SideCrossIterator &operator=(SideCrossIterator &&other) = delete;
 
         SideCrossIterator &operator=(const SideCrossIterator &other); // Assignment operator
 
@@ -107,7 +111,11 @@ public:
         PrimeIterator(MagicalContainer &container , int position = 0); // Default constructor
         PrimeIterator(const PrimeIterator &other);  // Copy constructor
 
-        ~PrimeIterator() {}// Destructor
+        ~PrimeIterator() {} // Destructor
+
+        // for tidy
+        PrimeIterator(PrimeIterator &&other) = delete;
+        PrimeIterator &operator=(PrimeIterator &&other) = delete;
 
         PrimeIterator &operator=(const PrimeIterator &other); // Assignment operator
 
