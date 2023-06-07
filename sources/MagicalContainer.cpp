@@ -190,17 +190,26 @@ bool MagicalContainer::SideCrossIterator::operator!=(const SideCrossIterator &ot
 }
 bool MagicalContainer::SideCrossIterator::operator>(const SideCrossIterator &other) const
 {
-    return true;
+    return (_position > other._position);
 }
 bool MagicalContainer::SideCrossIterator::operator<(const SideCrossIterator &other) const
 {
-    return true;
+    return (_position < other._position);
 }
 
 // Dereference operator (operator*)
 int MagicalContainer::SideCrossIterator::operator*() const
 {
-    return (_container._element[(size_t)_position]);
+    // if position is odd number:
+    //we want the number in the _element in position (size - 1) - counter
+    if(_position%2 != 0 ){
+      
+        return (_container._element[(_container._element.size() - 1) - (size_t)_counter]);
+    }
+    //if position is even : 
+    // we ant the  number in the _element in position (position) - counter
+    return (_container._element[(size_t)_position - (size_t)_counter]);
+   
 }
 
 // Pre-increment operator (operator++)
@@ -210,15 +219,10 @@ MagicalContainer::SideCrossIterator &MagicalContainer::SideCrossIterator::operat
     {
         throw runtime_error("you try to increment beyond the end");
     }
-    // if _position is even
-    if(_position % 2 == 0 ){
-        _position = _position - _counter;
+    if(_position%2 != 0){
+        _counter++;
     }
-    // if posotion is odd
-    else{
-        _position = (_container._element.size() - 1) - (size_t)_counter;
-        ++_counter;
-    }
+    _position++;
     return (*this);
 }
 
@@ -254,8 +258,6 @@ MagicalContainer::PrimeIterator &MagicalContainer::PrimeIterator::operator=(cons
 // Equality comparison (operator==)
 bool MagicalContainer::PrimeIterator::operator==(const PrimeIterator &other) const
 {
-    cout<< "this position: " << _position << endl;
-    cout<< "this position: " << other._position << endl;
     return (_position == other._position);
 }
 // Inequality comparison (operator!=)
@@ -281,8 +283,6 @@ int MagicalContainer::PrimeIterator::operator*() const
 // Pre-increment operator (operator++)
 MagicalContainer::PrimeIterator &MagicalContainer::PrimeIterator::operator++()
 {
-    cout << "prime size: " << _container._primeElement.size() << endl;
-    cout << "position: " << _position << endl;
     if(_position >= _container._primeElement.size()){
         throw runtime_error("you try to increment beyond the end");
     }
